@@ -1,0 +1,23 @@
+{
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "extends": ["./config/eslint/node.json"]
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["./config/eslint/browser.json"]
+    },
+    {
+      "files": [
+        "**/__tests__/**/*.tsx",
+        "**/__tests__/**/*.tsx",
+        "*.spec.ts",
+        "*.spec.tsx",
+        "*.test.ts",
+        "*.test.tsx"
+      ],
+      "extends": ["./config/eslint/specs.json"]
+    }
+  ]
+}

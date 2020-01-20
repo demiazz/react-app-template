@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "./browser.json",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/recommended",
+    "plugin:testing-library/react"
+  ],
+  "plugins": ["jest", "jest-dom", "testing-library"],
+  "env": {
+    "jest": true
+  }
+}

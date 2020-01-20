@@ -1,0 +1,22 @@
+# IDE
+.idea
+.vscode
+
+# macOS metadata files
+.DS_Store
+
+# Build
+.cache
+build
+
+# npm
+node_modules
+
+# Logs
+*.log
+
+# Environment
+.env.production.local
+.env.development.local
+.env.test.local
+.env.local

@@ -1,0 +1,25 @@
+pre-commit:
+  commands:
+    check-types:
+      glob: "*.{ts,tsx}"
+      run: make check-types
+
+    check-scripts:
+      files: git diff --name-only HEAD @{push}
+      glob: "*.{ts,tsx,js,jsx}"
+      run: make check-scripts-hook -- {staged_files} --fix && git add {staged_files}
+
+    check-styles:
+      files: git diff --name-only HEAD @{push}
+      glob: "*.{css,pcss}"
+      run: make check-styles-hook -- {staged_files} --fix && git add {staged_files}
+
+    prettier:
+      files: git diff --name-only HEAD @{push}
+      glob: "*.{ts,tsx,js,jsx,css,pcss}"
+      run: make prettier-hook -- --write {staged_files} && git add {staged_files}
+
+pre-push:
+  commands:
+    test:
+      run: make test

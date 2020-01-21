@@ -1,6 +1,6 @@
+const { BuildInfoPlugin } = require("@react-dev-env/build-info-plugin");
 const { EnvironmentPlugin } = require("webpack");
 
-const { BuildInfoPlugin } = require("../plugins");
 const { ensurePlugins, toEnvironment } = require("./utils");
 
 module.exports = (

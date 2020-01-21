@@ -1112,6 +1112,13 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
+"@react-dev-env/build-info-plugin@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@react-dev-env/build-info-plugin/-/build-info-plugin-0.3.0.tgz#c84e4d8ffa6d37c79050b9dea833e473dc95d7e4"
+  integrity sha512-h2S5d2GgbPY+rAQxZNuFnoqyxR4YmX1216flMaa5WniCM5fYcfBK+6cwlZHh0+1dS6IefMtnzQfiS+4gu55owQ==
+  dependencies:
+    webpack-sources "^1.4.3"
+
 "@react-dev-env/clean-source-maps-plugin@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@react-dev-env/clean-source-maps-plugin/-/clean-source-maps-plugin-0.2.0.tgz#743ae6eea7afa793ccd76cd499734fabc6ba9358"

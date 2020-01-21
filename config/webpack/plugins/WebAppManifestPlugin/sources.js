@@ -1,4 +1,4 @@
-const { readFile } = require("fs");
+const { readFile } = require("fs-extra");
 const mime = require("mime-types");
 const { RawSource } = require("webpack-sources");
 const { join } = require("path");
@@ -8,12 +8,11 @@ const { mapKeys, toJSON } = require("../../../utils");
 
 const sizeToDimensions = size => `${size}x${size}`;
 
-const readToRawSource = file =>
-  new Promise((resolve, reject) => {
-    readFile(file, (error, data) =>
-      error ? reject(error) : resolve(new RawSource(data))
-    );
-  });
+const readToRawSource = async file => {
+  const content = await readFile(file);
+
+  return new RawSource(content);
+};
 
 const readFavicon = async ({ file, sizes }) => {
   const filename = "favicon.ico";

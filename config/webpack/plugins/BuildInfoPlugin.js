@@ -1,27 +1,25 @@
+const { RawSource } = require("webpack-sources");
+
 module.exports = class BuildInfoPlugin {
-  constructor(options = {}) {
-    this.beautify = Boolean(options.beautify);
-    this.output = options.output || "build-info.json";
-    this.buildInfo = options.buildInfo || {};
+  constructor({
+    beautify = false,
+    buildInfo = {},
+    fileName = "build-info.json"
+  } = {}) {
+    this.beautify = beautify;
+    this.fileName = fileName;
+    this.buildInfo = buildInfo;
   }
 
   apply(compiler) {
     compiler.hooks.emit.tap("build-info", compilation => {
-      const buildInfo = JSON.stringify(
-        this.buildInfo,
-        null,
-        this.beautify ? 2 : null
-      );
-
-      compilation.assets[this.output] = {
-        source() {
-          return buildInfo;
-        },
-
-        size() {
-          return buildInfo.length;
-        }
-      };
+      compilation.assets[this.fileName] = this.createAsset();
     });
+  }
+
+  createAsset() {
+    const json = JSON.stringify(this.buildInfo, null, this.beautify ? 2 : 0);
+
+    return new RawSource(json);
   }
 };

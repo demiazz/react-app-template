@@ -1,7 +1,9 @@
 const SentryPlugin = require("@sentry/webpack-plugin");
+const {
+  CleanSourceMapsPlugin
+} = require("@react-dev-env/clean-source-maps-plugin");
 const { EnvironmentPlugin } = require("webpack");
 
-const { CleanSourceMapsPlugin } = require("../plugins");
 const { ensurePlugins } = require("./utils");
 
 const requiredVariables = ["SENTRY_PROJECT", "SENTRY_ORG", "SENTRY_AUTH_TOKEN"];

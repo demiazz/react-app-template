@@ -1,9 +1,11 @@
+const {
+  WebAppManifestPlugin
+} = require("@react-dev-env/web-app-manifest-plugin/lib");
 const { capitalCase } = require("capital-case");
 const HtmlPlugin = require("html-webpack-plugin");
 const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
 const { join } = require("path");
 
-const { WebAppManifestPlugin } = require("../plugins");
 const { ensurePlugins } = require("./utils");
 
 const minifyOptions = {
@@ -41,24 +43,17 @@ module.exports = (
     new ScriptExtHtmlPlugin({
       defaultAttribute: "defer"
     }),
-    new WebAppManifestPlugin({
-      beautify: !isProductionBuild,
-      favicon: {
-        file: join(iconsDir, "favicon.ico"),
-        sizes: [16, 24, 32, 64]
-      },
-      icons: [
-        {
-          file: join(iconsDir, "logo192.png"),
-          size: 192,
-          touch: true
-        },
-        {
-          file: join(iconsDir, "logo512.png"),
-          size: 512
-        }
-      ],
-      manifest: {
+    new WebAppManifestPlugin(
+      {
+        appIcons: [
+          {
+            filePath: join(iconsDir, "logo192.png"),
+            appleTouchIcon: true
+          },
+          {
+            filePath: join(iconsDir, "logo512.png")
+          }
+        ],
         backgroundColor: "#ffffff",
         description: packageDescription,
         developer: {
@@ -66,12 +61,16 @@ module.exports = (
           url: packageAuthorURL
         },
         display: "standalone",
+        favIcon: join(iconsDir, "favicon.ico"),
         lang: "en",
         name: name,
         shortName: name,
         startUrl: ".",
         themeColor: "#000000"
+      },
+      {
+        beautify: !isProductionBuild
       }
-    })
+    )
   );
 };

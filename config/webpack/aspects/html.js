@@ -23,14 +23,7 @@ const minifyOptions = {
 
 module.exports = (
   config,
-  {
-    isProductionBuild,
-    packageName,
-    packageDescription,
-    packageAuthorName,
-    packageAuthorURL,
-    iconsDir
-  }
+  { isProductionBuild, packageName, packageDescription, iconsDir }
 ) => {
   const name = capitalCase(packageName);
 
@@ -56,10 +49,6 @@ module.exports = (
         ],
         backgroundColor: "#ffffff",
         description: packageDescription,
-        developer: {
-          name: packageAuthorName,
-          url: packageAuthorURL
-        },
         display: "standalone",
         favIcon: join(iconsDir, "favicon.ico"),
         lang: "en",
